@@ -1,7 +1,3 @@
-Absolutely! Here's a template for a nice README file that you can use for your React project:
-
----
-
 # Pokemon App
 
 This is a React application that retrieves a list of Pokemon from an external API and allows users to view details of each Pokemon by clicking on them. It uses TypeScript, Redux Toolkit, and RTK Query for state management and data fetching.
@@ -90,7 +86,3 @@ Contributions are welcome! If you have any suggestions or improvements, feel fre
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
----
-
-Feel free to customize this README file further to include specific details about your project, such as project structure, additional dependencies, API documentation, or any other relevant information.
