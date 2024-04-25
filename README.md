@@ -27,13 +27,6 @@ Make sure you have Node.js and npm (or yarn) installed on your machine.
    yarn install
    ```
 
-### Configuration
-
-The application requires a base API URL to fetch data from. Create a `.env` file in the root directory and add the following line:
-
-```dotenv
-REACT_APP_BASE_API_URL=https://pokeapi.co/api/v2
-```
 
 ### Running the App
 
