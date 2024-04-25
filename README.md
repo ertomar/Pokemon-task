@@ -1,30 +1,96 @@
-# React + TypeScript + Vite
+Absolutely! Here's a template for a nice README file that you can use for your React project:
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+---
 
-Currently, two official plugins are available:
+# Pokemon App
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+This is a React application that retrieves a list of Pokemon from an external API and allows users to view details of each Pokemon by clicking on them. It uses TypeScript, Redux Toolkit, and RTK Query for state management and data fetching.
 
-## Expanding the ESLint configuration
+## Features
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- Displays a list of Pokemon fetched from the API.
+- Allows users to click on a Pokemon to view its details.
+- Persists data using Redux Toolkit and RTK Query for improved performance.
 
-- Configure the top-level `parserOptions` property like this:
+## Getting Started
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+Follow these instructions to get the project up and running on your local machine.
+
+### Prerequisites
+
+Make sure you have Node.js and npm (or yarn) installed on your machine.
+
+### Installation
+
+1. Clone the repository:
+
+2. Install dependencies:
+   ```bash
+   npm install
+   # or
+   yarn install
+   ```
+
+### Configuration
+
+The application requires a base API URL to fetch data from. Create a `.env` file in the root directory and add the following line:
+
+```dotenv
+REACT_APP_BASE_API_URL=https://pokeapi.co/api/v2
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+### Running the App
+
+To start the development server, run:
+
+```bash
+npm start
+# or
+yarn start
+```
+
+Open [http://localhost:3000](http://localhost:3000) in your browser to view the app.
+
+### Running Tests
+
+To run unit tests, use:
+
+```bash
+npm test
+# or
+yarn test
+```
+
+### Deployment
+
+To build the app for production, run:
+
+```bash
+npm run build
+# or
+yarn build
+```
+
+This will create a `build` folder with optimized assets ready for deployment.
+
+## Technologies Used
+
+- React
+- TypeScript
+- Redux Toolkit
+- RTK Query
+- Testing Library
+- Jest
+- Vite
+
+## Contributing
+
+Contributions are welcome! If you have any suggestions or improvements, feel free to open an issue or submit a pull request.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+---
+
+Feel free to customize this README file further to include specific details about your project, such as project structure, additional dependencies, API documentation, or any other relevant information.
