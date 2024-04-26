@@ -6,7 +6,7 @@ import { RowData } from "./components/RowData";
 export default function PokemonDetails() {
   const { id } = useParams();
 
-  const { data, error, isLoading } = useGetPokemonByIdQuery(id);
+  const { data: PokemonData, error, isLoading } = useGetPokemonByIdQuery(id);
 
   if (error) {
     return <div className="wrapper">Error!</div>;
@@ -18,17 +18,20 @@ export default function PokemonDetails() {
 
   return (
     <div className="wrapper">
-      <h1>{data?.name}</h1>
+      <h1>{PokemonData?.name}</h1>
 
       <div className="pokemon-details" data-testid="pokemon-details">
-        <img src={data?.sprites?.front_default} alt={data?.name} />
+        <img
+          src={PokemonData?.sprites?.front_default}
+          alt={PokemonData?.name}
+        />
 
-        <RowData label="Name" value={data?.name} />
-        <RowData label="Height" value={data?.height} />
-        <RowData label="Weight" value={data?.weight} />
+        <RowData label="Name" value={PokemonData?.name} />
+        <RowData label="Height" value={`${PokemonData?.height} cm`} />
+        <RowData label="Weight" value={`${PokemonData?.weight} kg`} />
         <RowData
           label="Types"
-          value={data?.types?.map((type) => type.type.name).join(", ")}
+          value={PokemonData?.types?.map((type) => type.type.name).join(", ")}
         />
       </div>
     </div>
