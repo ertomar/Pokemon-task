@@ -9,10 +9,10 @@ export const pokemonApi = createApi({
   }),
   endpoints: (builder) => ({
     getPokemonList: builder.query<PokemonResponse, number | void>({
-      query: () => `pokemon`,
+      query: () => `/pokemon`,
     }),
     getPokemonById: builder.query<Pokemon, string | undefined>({
-      query: (id) => `pokemon/${id}`,
+      query: (id) => `/pokemon/${id}`,
     }),
   }),
 });

@@ -20,7 +20,7 @@ export default function PokemonDetails() {
     <div className="wrapper">
       <h1>{data?.name}</h1>
 
-      <div className="pokemon-details">
+      <div className="pokemon-details" data-testid="pokemon-details">
         <img src={data?.sprites?.front_default} alt={data?.name} />
 
         <RowData label="Name" value={data?.name} />

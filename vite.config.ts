@@ -8,5 +8,8 @@ export default defineConfig({
     globals: true,
     environment: "jsdom",
     setupFiles: ["./src/mocks/setupTests.ts"],
+    coverage: {
+      provider: "istanbul",
+    },
   },
 });

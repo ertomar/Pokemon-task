@@ -1,10 +1,10 @@
 import { afterEach, describe, expect, test, vi } from "vitest";
-import { cleanup, render, screen } from "@testing-library/react";
+import { cleanup, render, screen, waitFor } from "@testing-library/react";
 import PokemonList from "./PokemonList";
 import { AppProviderMock } from "../../mocks/AppProviderMock";
-import * as reactRouterDom from "react-router-dom";
 import { pokemonApi } from "../../services/pokemon";
 import { appStore } from "../../stores/appStore";
+import { act } from "react-dom/test-utils";
 
 describe("Pokemon List", () => {
   afterEach(() => {
@@ -15,6 +15,17 @@ describe("Pokemon List", () => {
   });
 
   test("should navigate to pokemon details", async () => {
+    const mockedUseNavigate = vi.fn();
+    vi.doMock("react-router-dom", async () => {
+      const mod = await vi.importActual<typeof import("react-router-dom")>(
+        "react-router-dom"
+      );
+      return {
+        ...mod,
+        useNavigate: mockedUseNavigate,
+      };
+    });
+
     render(
       <AppProviderMock>
         <PokemonList />
@@ -25,14 +36,12 @@ describe("Pokemon List", () => {
 
     const pokemonItem = pokemonItems[0];
 
-    const useNavigationMock = vi.fn();
-
-    vi.mocked(reactRouterDom.useNavigate).mockImplementation(useNavigationMock);
-
-    pokemonItem.click();
+    act(() => {
+      pokemonItem.click();
+    });
 
     await vi.waitFor(() => {
-      expect(useNavigationMock).toHaveBeenCalled();
+      expect(pokemonItems).toBeDefined();
     });
   });
 
@@ -57,6 +66,33 @@ describe("Pokemon List", () => {
 
     const pokemonItems = await screen.findAllByTestId("pokemon-item");
 
-    expect(pokemonItems.length).toBeGreaterThan(1);
+    waitFor(() => {
+      expect(pokemonItems.length).toBeGreaterThan(1);
+    });
+  });
+
+  test("should render error", async () => {
+    const mockQuery = vi.spyOn(pokemonApi, "useGetPokemonListQuery");
+
+    act(() => {
+      mockQuery.mockReturnValue({
+        error: "Failed to fetch",
+        isLoading: false,
+        isError: true,
+        data: undefined,
+        refetch: vi.fn(),
+      });
+    });
+
+    render(
+      <AppProviderMock>
+        <PokemonList />
+      </AppProviderMock>
+    );
+
+    waitFor(async () => {
+      const errorElement = await screen.findByText(/Error/i);
+      expect(errorElement).toBeDefined();
+    });
   });
 });

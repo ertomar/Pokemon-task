@@ -9,6 +9,7 @@
 # Ignore build output directories
 /target/
 /build/
+/dist/
 
 # Ignore system files
 .DS_Store
@@ -21,3 +22,7 @@ Thumbs.db
 # Ignore dependencies and package managers
 /node_modules/
 /vendor/
+
+# testing
+/test/
+/coverage/
